@@ -21,3 +21,9 @@ yarn dev
 ```
 
 The server is now open on localhost:8000. You can now use the sever to connect with socket-io client and handle the signaling.
+
+## Deploy on heroku
+
+The easiest way to deploy this application is is to use [heroku](https://heroku.com). You can simply deploy this server using this one click deploy:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/penguin-academy/webRTC-signaling-server)
