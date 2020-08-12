@@ -1,5 +1,6 @@
 const express = require('express')
 const http = require('http')
+const e = require('express')
 
 const app = express()
 const server = http.createServer(app)
@@ -14,7 +15,12 @@ app.use(express.json())
 io.on('connection', socket => {
   socket.on('disconnect', () => {
     for (room in rooms) {
-      rooms[room] = rooms[room].filter(e => e != socket.id)
+      const foundIndex = rooms[room].findIndex(element => element == socket.id)
+      if (foundIndex != -1) {
+        rooms[room].splice(foundIndex, 1)
+        io.to(rooms[room][0]).emit('user disconnects')
+        break
+      }
     }
   })
 
